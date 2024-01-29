@@ -11,9 +11,6 @@ dependencies:
   '@fontsource-variable/work-sans':
     specifier: ^5.0.17
     version: 5.0.17
-  '@fontsource/trirong':
-    specifier: ^5.0.18
-    version: 5.0.18
   astro:
     specifier: ^4.2.6
     version: 4.2.6(typescript@5.3.3)
@@ -585,10 +582,6 @@ packages:
 
   /@fontsource-variable/work-sans@5.0.17:
     resolution: {integrity: sha512-5aZGlBgqWhFympHYv35OP8Slz3y90jUQhYoeIQDvanfkoP/mwj+6rDomerN6qvYWQxjReE+bPZhiuceJLXrgIQ==}
-    dev: false
-
-  /@fontsource/trirong@5.0.18:
-    resolution: {integrity: sha512-bG6YV9MSrFuh6U5CV9gd2bwTGY4/G4/108H0fM4DVkAT1n1sb/o8Sjgp2rhqdspM82rk/xhStl4Kbas3V7bDsg==}
     dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
