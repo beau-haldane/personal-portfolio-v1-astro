@@ -1,0 +1,17 @@
+---
+const { content } = Astro.props;
+---
+
+<div class='chip'>
+  {content}
+</div>
+
+<style>
+  .chip {
+    color: #FFF;
+    padding: 3px 12px;
+    width: fit-content;
+    border-radius: 16px;
+    background: var(--Black, #212121);
+  }
+</style>

@@ -1,16 +1,46 @@
 ---
+import LeftColumn from '../components/LeftColumn.astro';
+import RightColumn from '../components/RightColumn.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Beau Jorgensen | Software Developer">
-	<div class="content">
-
-	</div>
+<Layout title='Beau Jorgensen | Software Developer'>
+  <div class='columns'>
+    <div class='left'>
+			<LeftColumn />
+		</div>
+    <div class='right'>
+			<RightColumn />
+		</div>
+  </div>
 </Layout>
 
 <style>
-	.content {
-		width: 100%;
-		height: 100%;
-	}
+  .columns {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 3rem;
+    flex: 1 0 0;
+		overflow: scroll;
+
+    .left {
+      display: flex;
+      width: 40%;
+      max-width: 27rem;
+      height: 100%;
+      flex-direction: column;
+      gap: 125px;
+    }
+
+    .right {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      flex: 1 0 0;
+			overflow: scroll;
+    }
+  }
 </style>

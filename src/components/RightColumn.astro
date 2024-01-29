@@ -1,0 +1,27 @@
+---
+import About from "./About.astro";
+import Section from "./Section.astro";
+import Experience from "./Experience.astro"
+import Project from "./Project.astro"
+import { employmentHistory } from "../content/employmentDetails"
+import { softwareProjects, otherProjects } from "../content/projectDetails"
+---
+<About />
+<Section heading="Experience">
+  { employmentHistory.map(employment => {
+    return <Experience jobDetails={employment} />
+  })}
+</Section>
+<Section heading="Software Projects">
+  { softwareProjects.map(project => {
+    return <Project project={project} />
+  })}
+</Section>
+<Section heading="Other Projects">
+  { otherProjects.map(project => {
+    return <Project project={project} />
+  })}
+</Section>
+<style>
+  
+</style>

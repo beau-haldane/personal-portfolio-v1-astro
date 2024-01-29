@@ -1,0 +1,60 @@
+---
+import Chip from './Chip.astro';
+
+const skills = [
+  'TypeScript',
+  'Node',
+  'React',
+  'Mocha/Chai',
+  'Jest',
+  'NextJS',
+  'SvelteKit',
+  'Postgres',
+  'SQL',
+  'Docker',
+  'laC',
+];
+---
+
+<div class='blurb-skills'>
+  <div class='title-blurb'>
+    <h3>Software Engineer</h3>
+    <!-- <p>I’m passionate about building scalable, efficient software solutions which look and feel great.</p> -->
+  </div>
+  <div class='skills'>
+    {
+      skills.map((skill) => {
+        return <Chip content={skill} />;
+      })
+    }
+  </div>
+</div>
+
+<style>
+  h3 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px; /* 95% */
+    letter-spacing: 0.6px;
+    color: #646464;
+  }
+
+  .blurb-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .title-blurb {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+</style>

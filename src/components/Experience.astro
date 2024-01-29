@@ -1,0 +1,84 @@
+---
+import type { JobDetails } from '../types';
+import ExternalLink from './icons/ExternalLink.astro';
+interface Props {
+  jobDetails: JobDetails;
+}
+const { jobDetails } = Astro.props;
+const { jobTitle, jobTitleSecondary, employer, employmentType, achievements, tenure, employerWebsite } = jobDetails;
+---
+
+<div class='experience-content'>
+  <div class='experience-left heading-container'>
+    <h4>{tenure}</h4>
+    <p class='italic-subheading'>{employmentType}</p>
+  </div>
+  <div class='experience-right'>
+    <div class='heading-container'>
+      <h4>
+        {jobTitle} - {
+          employerWebsite ? (
+            <a href={employerWebsite} target='_blank' class='employer-link'>
+              {employer}
+              <ExternalLink />
+            </a>
+          ) : (
+            employer
+          )
+        }
+      </h4>
+      {jobTitleSecondary ? <p class='italic-subheading'>{jobTitleSecondary}</p> : null}
+    </div>
+    <ul>
+      {
+        achievements.map((achievement) => {
+          return <li>{achievement}</li>;
+        })
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  h4,
+  .employer-link {
+    color: #646464;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.0625rem; /* 94.444% */
+    letter-spacing: -0.2px;
+    text-decoration: none;
+  }
+
+  .experience-content {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0 0.625rem;
+  }
+
+  .heading-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .experience-left {
+    min-width: 200px;
+  }
+
+  .experience-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .italic-subheading {
+    margin: 0;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 0.625rem;
+  }
+</style>
