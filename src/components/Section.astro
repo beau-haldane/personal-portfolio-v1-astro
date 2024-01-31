@@ -1,8 +1,9 @@
 ---
 const { heading } = Astro.props;
+const divId = heading.toLowerCase().split(' ').join('-');
 ---
 
-<div class='section'>
+<div class='section' id={divId}>
   <div class='section-heading'>
     <h2>
       {heading}
@@ -22,7 +23,7 @@ const { heading } = Astro.props;
   .section-heading {
     position: sticky;
     top: 0;
-    background-color: #FFF;
+    background-color: #fff;
     padding: 10px 0;
     display: flex;
     justify-content: center;
