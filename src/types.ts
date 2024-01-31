@@ -16,5 +16,6 @@ export interface ProjectDetails {
     linkTitle: string;
     linkHref:string;
   }[]
-  details: string[];
+  details: string[],
+  skillsUsed: string[];
 };
