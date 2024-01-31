@@ -55,9 +55,13 @@ const { title } = Astro.props;
     width: 90%;
     max-width: 1400px;
     height: 100%;
-    margin: 3.125rem 0 3.5rem 0;
+    margin: 3.125rem 0 4rem 0;
     gap: 1.25rem;
     overflow: hidden;
+
+    @media (min-width: 500px) {
+      margin: 3.125rem 0 3.5rem 0;
+    }
   }
 
   .content-outline {
@@ -103,7 +107,8 @@ const { title } = Astro.props;
     bottom: 0;
     width: 100%;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    line-height: 0.8rem;
     a {
       font-size: 0.8rem;
       font-weight: 400;
