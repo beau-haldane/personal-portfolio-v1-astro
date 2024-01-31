@@ -1,9 +1,6 @@
 ---
 import '@fontsource-variable/work-sans';
-import GitHub from '../components/icons/GitHub.astro';
-import LinkedIn from '../components/icons/LinkedIn.astro';
-import Email from '../components/icons/Email.astro';
-
+import '../styles/global.css';
 interface Props {
   title: string;
 }
@@ -27,9 +24,13 @@ const { title } = Astro.props;
         <slot />
       </div>
       <div class='border-overlap bottom'>
-        <a href='https://github.com/beau-haldane' target='_blank'><GitHub /></a>
-        <a href='https://www.linkedin.com/in/beau-jorgensen/' target='_blank'><LinkedIn /></a>
-        <a href='/contact'><Email /></a>
+        <a href='https://github.com/beau-haldane' target='_blank' class='no-external-icon'
+          ><img src='/img/svg-icons/github.svg' /></a
+        >
+        <a href='https://www.linkedin.com/in/beau-jorgensen/' target='_blank' class='no-external-icon'
+          ><img src='/img/svg-icons/linkedIn.svg' /></a
+        >
+        <a href='/contact'><img src='/img/svg-icons/email.svg' /></a>
       </div>
     </div>
   </body>
