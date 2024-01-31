@@ -1,6 +1,5 @@
 ---
 import type { JobDetails } from '../types';
-import ExternalLink from './icons/ExternalLink.astro';
 interface Props {
   jobDetails: JobDetails;
 }
@@ -18,9 +17,8 @@ const { jobTitle, jobTitleSecondary, employer, employmentType, achievements, ten
       <h4>
         {jobTitle} - {
           employerWebsite ? (
-            <a href={employerWebsite} target='_blank' class='employer-link'>
+            <a href={employerWebsite} target='_blank'>
               {employer}
-              <ExternalLink />
             </a>
           ) : (
             employer
@@ -40,17 +38,6 @@ const { jobTitle, jobTitleSecondary, employer, employmentType, achievements, ten
 </div>
 
 <style>
-  h4,
-  .employer-link {
-    color: #646464;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.0625rem; /* 94.444% */
-    letter-spacing: -0.2px;
-    text-decoration: none;
-  }
-
   .experience-content {
     display: flex;
     gap: 1.25rem;

@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title='Beau Jorgensen | Software Developer'>
+  <div class='home-link'><a href='/'>{`< Home`}</a></div>
+  <div class='centered-content'>
+    <strong>Thanks for reaching out. I'll get back to you soon.</strong>
+  </div>
+</Layout>
+
+<style>
+  .home-link {
+    margin-top: 1rem;
+    position: absolute;
+  }
+
+  .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    min-height: 100%;
+  }
+</style>

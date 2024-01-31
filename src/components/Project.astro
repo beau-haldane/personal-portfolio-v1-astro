@@ -1,6 +1,5 @@
 ---
 import type { ProjectDetails } from '../types';
-import ExternalLink from './icons/ExternalLink.astro';
 import GitHub from './icons/GitHub.astro';
 interface Props {
   project: ProjectDetails;
@@ -18,8 +17,7 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
       {
         projectLink ? (
           <a href={projectLink} target='_blank' class='project-link'>
-            <h4>{projectTitle}</h4>
-            <ExternalLink />
+            {projectTitle}
           </a>
         ) : (
           <h4>{projectTitle}</h4>
@@ -28,15 +26,11 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
       {
         repositoryLinks ? (
           <div class='repository-links'>
-            {repositoryLinks.map(({ linkHref, linkTitle }) => {
-              return (
-                <a href={linkHref} target='_blank' class='repo-link'>
-                  <GitHub size={12} />
-                  {linkTitle}
-                  <ExternalLink />
-                </a>
-              );
-            })}
+            {repositoryLinks.map(({ linkHref, linkTitle }) => (
+              <a href={linkHref} target='_blank' class='project-link repo-link'>
+                <img src='/img/svg-icons/github.svg' width='12px' height='12px' /> {linkTitle}
+              </a>
+            ))}
           </div>
         ) : null
       }
@@ -52,18 +46,10 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
 </div>
 
 <style>
-  h4,
   .project-link {
-    color: #646464;
     display: flex;
     gap: 4px;
     align-items: center;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.0625rem; /* 94.444% */
-    letter-spacing: -0.2px;
-    text-decoration: none;
   }
 
   .project-image {
@@ -77,12 +63,7 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
   }
 
   .repo-link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
     font-weight: 500;
-    color: #646464;
-    text-decoration: none;
   }
 
   .project-content {

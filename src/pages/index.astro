@@ -7,13 +7,34 @@ import Layout from '../layouts/Layout.astro';
 <Layout title='Beau Jorgensen | Software Developer'>
   <div class='columns'>
     <div class='left'>
-			<LeftColumn />
-		</div>
+      <LeftColumn />
+    </div>
     <div class='right'>
-			<RightColumn />
-		</div>
+      <RightColumn />
+    </div>
   </div>
 </Layout>
+
+<script>
+  const sections = document.querySelectorAll<HTMLElement>('.section[id]');
+  const rightColumn = document.querySelector<HTMLElement>('.right');
+
+  if (rightColumn) rightColumn.addEventListener('scroll', navHighlighter);
+
+  function navHighlighter() {
+    let scrollY = window.scrollY;
+    sections.forEach((current) => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.getBoundingClientRect().top + window.pageYOffset - 100;
+      const sectionId = current.getAttribute('id');
+      const link = document.querySelector<HTMLAnchorElement>('a[href*=' + sectionId + ']');
+
+      sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
+        ? link?.classList.add('active')
+        : link?.classList.remove('active')
+    });
+  }
+</script>
 
 <style>
   .columns {
@@ -22,7 +43,7 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     gap: 3rem;
     flex: 1 0 0;
-		overflow: scroll;
+    overflow: scroll;
 
     .left {
       display: flex;
@@ -40,7 +61,8 @@ import Layout from '../layouts/Layout.astro';
       flex-direction: column;
       gap: 60px;
       flex: 1 0 0;
-			overflow: scroll;
+      overflow: scroll;
+      scroll-behavior: smooth;
     }
   }
 </style>

@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title='Beau Jorgensen | Software Developer'>
+  <div class='home-link'><a href='/'>{`< Home`}</a></div>
+  <div class='centered-content'>
+    <div class='feedback-form'>
+      <h2>Contact Me</h2>
+      <!-- @ts-ignore - property 'netlify' does not exist on FormHTMLAttributes -->
+      <form netlify netlify-honeypot name='contact' method='POST' action='/success'>
+        <p class='hidden'>
+          <label>
+            Don’t fill this out if you’re human: <input name='bot-field' />
+          </label>
+        </p>
+        <input type='hidden' name='form-name' value='contact' />
+        <label for='name'>Name</label>
+        <input id='name' type='text' name='name' required />
+        <label for='email'>Email</label>
+        <input id='email' type='email' name='email' required />
+        <label for='feedback'>Message</label>
+        <textarea id='feedback' wrap='soft' name='feedback' required></textarea>
+        <button type='submit'>Send</button>
+      </form>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .home-link {
+    margin-top: 1rem;
+    position: absolute;
+  }
+
+  .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    min-height: 100%;
+  }
+
+  .feedback-form {
+    margin: 40px 40px;
+    min-width: 250px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: inherit;
+    margin: 15px 0;
+    padding: 12px 20px;
+    width: 100%;
+  }
+
+  button {
+    border: none;
+    background-color: var(--primary-black);
+    color: white;
+    padding: 0.75rem 3rem;
+    width: min-content;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+</style>
