@@ -7,8 +7,7 @@ import Layout from '../layouts/Layout.astro';
   <div class='centered-content'>
     <div class='feedback-form'>
       <h2>Contact Me</h2>
-      <!-- @ts-ignore - property 'netlify' does not exist on FormHTMLAttributes -->
-      <form netlify netlify-honeypot name='contact' method='POST' action='/success'>
+      <form data-netlify="true" netlify-honeypot name='contact' method='POST' action='/success'>
         <p class='hidden'>
           <label>
             Don’t fill this out if you’re human: <input name='bot-field' />
@@ -26,6 +25,11 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </Layout>
+
+<script>
+  const scrollContainer = document.querySelector<HTMLElement>('.content-outline')
+  if (scrollContainer) scrollContainer.style.overflow = 'scroll'
+</script>
 
 <style>
   .home-link {
