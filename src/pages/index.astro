@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro';
   if (rightColumn) rightColumn.addEventListener('scroll', navHighlighter);
 
   function navHighlighter() {
-    let scrollY = window.pageYOffset;
+    let scrollY = window.scrollY;
     sections.forEach((current) => {
       const sectionHeight = current.offsetHeight;
       const sectionTop = current.getBoundingClientRect().top + window.pageYOffset - 100;
