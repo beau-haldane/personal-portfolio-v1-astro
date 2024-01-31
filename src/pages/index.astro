@@ -2,6 +2,7 @@
 import LeftColumn from '../components/LeftColumn.astro';
 import RightColumn from '../components/RightColumn.astro';
 import Layout from '../layouts/Layout.astro';
+import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
 ---
 
 <Layout title='Beau Jorgensen | Software Developer'>
@@ -11,18 +12,24 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class='right'>
       <RightColumn />
+      <div class='scroll-container'>
+        <div class='scroll-animation'>
+          <LottieAnimation src='/img/scroll.json' autoplay='visible' />
+        </div>
+      </div>
     </div>
   </div>
 </Layout>
 
 <script>
+  const scrollContainer = document.querySelector<HTMLElement>('.scroll-container');
   const sections = document.querySelectorAll<HTMLElement>('.section[id]');
   const rightColumn = document.querySelector<HTMLElement>('.right');
-
   if (rightColumn) rightColumn.addEventListener('scroll', navHighlighter);
 
   function navHighlighter() {
     let scrollY = window.scrollY;
+    if (scrollY !== null) scrollContainer?.classList.add('scrolled');
     sections.forEach((current) => {
       const sectionHeight = current.offsetHeight + 60;
       const sectionTop = current.getBoundingClientRect().top + window.pageYOffset - 100;
@@ -67,6 +74,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .right {
+      position: relative;
       width: 100%;
       height: 100%;
       display: flex;
@@ -77,6 +85,39 @@ import Layout from '../layouts/Layout.astro';
       @media (min-width: 830px) {
         overflow: scroll;
         scroll-behavior: smooth;
+      }
+    }
+
+    .scroll-container {
+      display: none;
+    }
+    
+    @media (min-width: 830px) {
+      .scroll-container {
+        visibility: visible;
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(transparent, #fff);
+        transition: all 0.5s;
+        margin-top: -13rem;
+      }
+
+      .scrolled {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .scroll-animation {
+        margin-top: 10rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #fff;
+        border-radius: 100%;
+        border: 2px solid var(--primary-black);
       }
     }
   }
