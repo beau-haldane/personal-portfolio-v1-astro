@@ -22,26 +22,16 @@ import Layout from '../layouts/Layout.astro';
   if (rightColumn) rightColumn.addEventListener('scroll', navHighlighter);
 
   function navHighlighter() {
-    // Get current scroll position
     let scrollY = window.pageYOffset;
-
-    // Now we loop through sections to get height, top and ID values for each
     sections.forEach((current) => {
       const sectionHeight = current.offsetHeight;
       const sectionTop = current.getBoundingClientRect().top + window.pageYOffset - 100;
       const sectionId = current.getAttribute('id');
-      // const scrollDistance = scrollY - sectionTop;
-      // const scrollPercentage =  scrollDistance / sectionHeight;
-      // if (current.id === 'experience') console.log(scrollPercentage);
-      if (
-        scrollY > sectionTop &&
-        scrollY <= sectionTop + sectionHeight &&
-        document.querySelector('a[href*=' + sectionId + ']')
-      ) {
-        document.querySelector('a[href*=' + sectionId + ']').classList.add('active');
-      } else {
-        document.querySelector('a[href*=' + sectionId + ']').classList.remove('active');
-      }
+      const link = document.querySelector<HTMLAnchorElement>('a[href*=' + sectionId + ']');
+
+      sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
+        ? link?.classList.add('active')
+        : link?.classList.remove('active')
     });
   }
 </script>
