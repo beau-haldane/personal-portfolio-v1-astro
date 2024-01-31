@@ -64,7 +64,7 @@ export const otherProjects: ProjectDetails[] = [
   {
     projectTitle: 'King Velvet Album',
     projectLink: 'https://open.spotify.com/album/4IBv4kBjc9c9P6FgNkaaUp',
-    projectImagePath: '/img/projects/king-velvet.jpeg',
+    projectImagePath: '/img/projects/king-velvet.png',
     details: [
       `Not only did I design and build the website for King Velvet’s debut album, I also recorded, produced, and mixed the album.`,
       'I assisted King Velvet with songwriting, played a number of instruments on each song, and captured the results so that he could share the music that he had been wanting to share for so long.',
