@@ -1,10 +1,11 @@
 ---
 import type { ProjectDetails } from '../types';
+import Chip from './Chip.astro';
 interface Props {
   project: ProjectDetails;
 }
 const { project } = Astro.props;
-const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } = project;
+const { projectTitle, projectLink, projectImagePath, repositoryLinks, details, skillsUsed } = project;
 ---
 
 <div class='project-content'>
@@ -15,11 +16,11 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
     <div class='heading-container'>
       {
         projectLink ? (
-          <a href={projectLink} target='_blank' class='project-link'>
+          <a href={projectLink} target='_blank' class='project-link project-title'>
             {projectTitle}
           </a>
         ) : (
-          <h4>{projectTitle}</h4>
+          <h4 class='project-title'>{projectTitle}</h4>
         )
       }
       {
@@ -41,6 +42,11 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
         })
       }
     </div>
+    <div class="project-skills">
+      {skillsUsed.map(skill => {
+        return <Chip content={skill} />
+      })}
+    </div>
   </div>
 </div>
 
@@ -51,6 +57,13 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
     align-items: center;
   }
 
+  .project-title {
+    font-size: 1.15rem;
+    @media (min-width: 1025px) {
+      font-size: inherit;
+    }
+  }
+
   .project-image {
     width: 12.5rem;
   }
@@ -59,6 +72,11 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
     display: flex;
     flex-direction: column;
     gap: 4px;
+
+    @media (min-width: 1025px) {
+      flex-direction: column;
+      gap: 4px;
+    }
   }
 
   .repo-link {
@@ -67,8 +85,13 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
 
   .project-content {
     display: flex;
+    flex-direction: column;
     gap: 1.25rem;
     padding: 0 0.625rem;
+
+    @media (min-width: 1025px) {
+      flex-direction: row;
+    }
   }
 
   .heading-container {
@@ -86,5 +109,18 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details } 
     flex-direction: column;
     gap: 0.75rem;
     width: 100%;
+  }
+
+  .project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+
+    .chip {
+      font-size: .9rem;
+      color: var(--primary-black);
+      background-color: #fff;
+      border: solid 1px var(--primary-black);
+    }
   }
 </style>
