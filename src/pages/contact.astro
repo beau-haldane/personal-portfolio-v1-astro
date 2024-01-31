@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title='Beau Jorgensen | Software Developer'>
-  <div class="home-link"><a href='/'>{`< Home`}</a></div>
+  <div class='home-link'><a href='/'>{`< Home`}</a></div>
   <div class='centered-content'>
     <div class='feedback-form'>
       <h2>Contact Me</h2>
@@ -16,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
         </p>
         <input type='hidden' name='form-name' value='contact' />
         <label for='name'>Name</label>
-        <input id='name' type='text' name='name' />
+        <input id='name' type='text' name='name' required />
         <label for='email'>Email</label>
         <input id='email' type='email' name='email' required />
         <label for='feedback'>Message</label>
@@ -59,10 +59,15 @@ import Layout from '../layouts/Layout.astro';
   }
 
   button {
-    background-color: teal;
+    border: none;
+    background-color: var(--primary-black);
     color: white;
     padding: 0.75rem 3rem;
     width: min-content;
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 
   .hidden {
