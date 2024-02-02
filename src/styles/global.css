@@ -4,6 +4,10 @@
   --primary-bg: #fff;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Work Sans Variable', sans-serif;
