@@ -1,24 +1,89 @@
 ---
 import About from "./About.astro";
 import Section from "./Section.astro";
-import Experience from "./Experience.astro"
-import Project from "./Project.astro"
-import { employmentHistory } from "../content/employmentDetails"
-import { softwareProjects, otherProjects } from "../content/projectDetails"
+import Experience from "./Experience.astro";
+import Project from "./Project.astro";
+import { employmentHistory } from "../content/employmentDetails";
+import { softwareProjects, otherProjects } from "../content/projectDetails";
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 ---
-<About />
-<Section heading="Experience">
-  { employmentHistory.map(employment => {
-    return <Experience jobDetails={employment} />
-  })}
-</Section>
-<Section heading="Software Projects">
-  { softwareProjects.map(project => {
-    return <Project project={project} />
-  })}
-</Section>
-<Section heading="Other Projects">
-  { otherProjects.map(project => {
-    return <Project project={project} />
-  })}
-</Section>
+
+<div class="right">
+  <About />
+  <Section heading="Experience">
+    {
+      employmentHistory.map((employment) => {
+        return <Experience jobDetails={employment} />;
+      })
+    }
+  </Section>
+  <Section heading="Software Projects">
+    {
+      softwareProjects.map((project) => {
+        return <Project project={project} />;
+      })
+    }
+  </Section>
+  <Section heading="Other Projects">
+    {
+      otherProjects.map((project) => {
+        return <Project project={project} />;
+      })
+    }
+  </Section>
+  <div class="scroll-container">
+    <div class="scroll-animation">
+      <LottieAnimation src="/img/scroll.json" autoplay="visible" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .right {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3.75em;
+    flex: 1 0 0;
+
+    @media (min-width: 51.875em) {
+      overflow: scroll;
+      scroll-behavior: smooth;
+    }
+  }
+
+  .scroll-container {
+    display: none;
+  }
+
+  @media (min-width: 51.875em) {
+    .scroll-container {
+      visibility: visible;
+      opacity: 1;
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(transparent, #fff);
+      transition: all 0.5s;
+      margin-top: -13em;
+    }
+
+    .scrolled {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .scroll-animation {
+      margin-top: 10em;
+      width: 2.5em;
+      height: 2.5em;
+      background-color: #fff;
+      border-radius: 100%;
+      border: 0.125em solid var(--primary-black);
+    }
+  }
+</style>

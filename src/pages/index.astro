@@ -1,44 +1,38 @@
 ---
-import LeftColumn from '../components/LeftColumn.astro';
-import RightColumn from '../components/RightColumn.astro';
-import Layout from '../layouts/Layout.astro';
-import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
+import LeftColumn from "../components/LeftColumn.astro";
+import RightColumn from "../components/RightColumn.astro";
+import Layout from "../layouts/Layout.astro";
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 ---
 
-<Layout title='Beau Jorgensen | Software Developer'>
-  <div class='columns'>
-    <div class='left'>
-      <LeftColumn />
-    </div>
-    <div class='right'>
-      <RightColumn />
-      <div class='scroll-container'>
-        <div class='scroll-animation'>
-          <LottieAnimation src='/img/scroll.json' autoplay='visible' />
-        </div>
-      </div>
-    </div>
+<Layout title="Beau Jorgensen | Software Developer">
+  <div class="columns">
+    <LeftColumn />
+    <RightColumn />
   </div>
 </Layout>
 
 <script>
-  const scrollContainer = document.querySelector<HTMLElement>('.scroll-container');
-  const sections = document.querySelectorAll<HTMLElement>('.section[id]');
-  const rightColumn = document.querySelector<HTMLElement>('.right');
-  if (rightColumn) rightColumn.addEventListener('scroll', navHighlighter);
+  const scrollContainer =
+    document.querySelector<HTMLElement>(".scroll-container");
+  const sections = document.querySelectorAll<HTMLElement>("section[id]");
+  const rightColumn = document.querySelector<HTMLElement>(".right");
+  if (rightColumn) rightColumn.addEventListener("scroll", navHighlighter);
 
   function navHighlighter() {
-    let scrollY = window.scrollY;
-    if (scrollY !== null) scrollContainer?.classList.add('scrolled');
+    const scrollY = window.scrollY;
+    if (scrollY !== null) scrollContainer?.classList.add("scrolled");
     sections.forEach((current) => {
       const sectionHeight = current.offsetHeight + 60;
-      const sectionTop = current.getBoundingClientRect().top + window.pageYOffset - 100;
-      const sectionId = current.getAttribute('id');
-      const link = document.querySelector<HTMLAnchorElement>('a[href*=' + sectionId + ']');
+      const sectionTop = current.getBoundingClientRect().top + scrollY - 100;
+      const sectionId = current.getAttribute("id");
+      const link = document.querySelector<HTMLAnchorElement>(
+        "a[href*=" + sectionId + "]",
+      );
 
       sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
-        ? link?.classList.add('active')
-        : link?.classList.remove('active');
+        ? link?.classList.add("active")
+        : link?.classList.remove("active");
     });
   }
 </script>
@@ -48,77 +42,14 @@ import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
     width: 100%;
     height: 100%;
     display: flex;
-    gap: 1rem;
+    gap: 1em;
     flex: 1 0 0;
     flex-direction: column;
     overflow: scroll;
 
-    @media (min-width: 830px) {
-      gap: 3rem;
+    @media (min-width: 51.875em) {
+      gap: 3em;
       flex-direction: row;
-    }
-
-    .left {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-
-      @media (min-width: 830px) {
-        width: 40%;
-        max-width: 27rem;
-        height: 100%;
-        gap: 7.8125rem;
-        padding-bottom: 1rem;
-        justify-content: space-between;
-      }
-    }
-
-    .right {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      flex: 1 0 0;
-
-      @media (min-width: 830px) {
-        overflow: scroll;
-        scroll-behavior: smooth;
-      }
-    }
-
-    .scroll-container {
-      display: none;
-    }
-    
-    @media (min-width: 830px) {
-      .scroll-container {
-        visibility: visible;
-        opacity: 1;
-        display: flex;
-        justify-content: center;
-        position: sticky;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(transparent, #fff);
-        transition: all 0.5s;
-        margin-top: -13rem;
-      }
-
-      .scrolled {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .scroll-animation {
-        margin-top: 10rem;
-        width: 2.5rem;
-        height: 2.5rem;
-        background-color: #fff;
-        border-radius: 100%;
-        border: 2px solid var(--primary-black);
-      }
     }
   }
 </style>

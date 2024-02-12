@@ -1,50 +1,70 @@
 ---
-import Chip from './Chip.astro';
+import Chip from "./Chip.astro";
 
 const skills = [
-  'TypeScript',
-  'React',
-  'Node',
-  'Express',
-  'Mocha/Chai',
-  'Jest',
-  'NextJS',
-  'SvelteKit',
-  'Postgres',
-  'SQL',
-  'Docker',
-  'laC',
+  "TypeScript",
+  "Node",
+  "Express",
+  "Jest",
+  "Mocha/Chai",
+  "React",
+  "NextJS",
+  "SvelteKit",
+  "Astro",
+  "Postgres",
+  "SQL",
+  "Docker",
+  "laC",
 ];
 ---
 
-<div class='blurb-skills'>
-  <div class='title-blurb'>
-    <h3>Software Engineer</h3>
-    <a href='/resume.pdf' target='_blank' class='resume-link-mobile'>{`See My Résumé `}</a>
+<div class="left">
+  <div class="blurb-skills">
+    <div class="title-blurb">
+      <h3>Software Developer</h3>
+      <a href="/resume.pdf" target="_blank" class="resume-link-mobile"
+        >{`See My Résumé `}</a
+      >
+    </div>
+    <div class="skills">
+      {
+        skills.map((skill) => {
+          return <Chip content={skill} />;
+        })
+      }
+    </div>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#software-projects">Software Projects</a>
+      <a href="#other-projects">Other Projects</a>
+    </nav>
   </div>
-  <div class='skills'>
-    {
-      skills.map((skill) => {
-        return <Chip content={skill} />;
-      })
-    }
-  </div>
-  <div class='navigation-links'>
-    <a href='#experience'>Experience</a>
-    <a href='#software-projects'>Software Projects</a>
-    <a href='#other-projects'>Other Projects</a>
-  </div>
+  <a href="/resume.pdf" target="_blank" class="resume-link">{`See My Résumé `}</a>
 </div>
-<a href='/resume.pdf' target='_blank' class="resume-link">{`See My Résumé `}</a>
 
 <style>
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    @media (min-width: 51.875em) {
+      width: 40%;
+      max-width: 27em;
+      height: 100%;
+      gap: 7.8125em;
+      padding-bottom: 1em;
+      justify-content: space-between;
+    }
+  }
+
   .blurb-skills {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1em;
 
-    @media (min-width: 830px) {
-      gap: 2.5rem;
+    @media (min-width: 51.875em) {
+      gap: 2.5em;
     }
   }
 
@@ -53,45 +73,49 @@ const skills = [
     flex-direction: row;
     justify-content: space-between;
 
-    @media (min-width: 830px) {
+    .resume-link {
+      display: none;
+    }
+
+    @media (min-width: 51.875em) {
       flex-direction: column;
       .resume-link-mobile {
         display: none;
+      }
+
+      .resume-link {
+        display: block;
       }
     }
   }
 
   .skills {
     display: flex;
-    gap: 10px;
+    gap: 0.625em;
     flex-wrap: wrap;
-    padding: 0.5rem 0;
-    @media (min-width: 830px) {
+    padding: 0.5em 0;
+    @media (min-width: 51.875em) {
       padding: 0;
     }
   }
 
-  .navigation-links {
+  nav {
     display: none;
-    @media (min-width: 830px) {
-      padding-top: 10rem;
+    @media (min-width: 51.875em) {
+      padding-top: 10em;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1em;
     }
   }
 
-  .resume-link {
-    display: none;
-  }
-
-  .navigation-links a {
+  nav a {
     transition: all 0.5s;
   }
 
   a.active {
     color: var(--primary-black);
-    margin-left: 1.1rem;
+    margin-left: 1.1em;
     display: list-item;
   }
 </style>

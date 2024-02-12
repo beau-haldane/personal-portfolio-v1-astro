@@ -8,9 +8,9 @@ const { project } = Astro.props;
 const { projectTitle, projectLink, projectImagePath, repositoryLinks, details, skillsUsed } = project;
 ---
 
-<div class='project-content'>
-  <div class='project-left heading-container'>
-    <img src={projectImagePath} class='project-image' />
+<article>
+  <div class='project-left'>
+    <img src={projectImagePath} class='project-image' alt=`${projectTitle} project screenshot` />
   </div>
   <div class='project-right'>
     <div class='heading-container'>
@@ -28,7 +28,7 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details, s
           <div class='repository-links'>
             {repositoryLinks.map(({ linkHref, linkTitle }) => (
               <a href={linkHref} target='_blank' class='project-link repo-link'>
-                <img src='/img/svg-icons/github.svg' width='12px' height='12px' /> {linkTitle}
+                <img src='/img/svg-icons/github.svg' width='0.75em' height='0.75em' /> {linkTitle}
               </a>
             ))}
           </div>
@@ -48,34 +48,34 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details, s
       })}
     </div>
   </div>
-</div>
+</article>
 
 <style>
   .project-link {
     display: flex;
-    gap: 4px;
+    gap: 0.25em;
     align-items: center;
   }
 
   .project-title {
-    font-size: 1.15rem;
-    @media (min-width: 1025px) {
+    font-size: 1.15em;
+    @media (min-width: 64.0625em) {
       font-size: inherit;
     }
   }
 
   .project-image {
-    width: 12.5rem;
+    width: 12.5em;
   }
 
   .repository-links {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25em;
 
-    @media (min-width: 1025px) {
+    @media (min-width: 64.0625em) {
       flex-direction: column;
-      gap: 4px;
+      gap: 0.25em;
     }
   }
 
@@ -83,13 +83,13 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details, s
     font-weight: 500;
   }
 
-  .project-content {
+  article {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    padding: 0 0.625rem;
+    gap: 1.25em;
+    padding: 0 0.625em;
 
-    @media (min-width: 1025px) {
+    @media (min-width: 64.0625em) {
       flex-direction: row;
     }
   }
@@ -97,30 +97,30 @@ const { projectTitle, projectLink, projectImagePath, repositoryLinks, details, s
   .heading-container {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.5em;
   }
 
   .project-left {
-    min-width: 12.5rem;
+    min-width: 12.5em;
   }
 
   .project-right {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.75em;
     width: 100%;
   }
 
   .project-skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.25em;
 
     .chip {
-      font-size: .9rem;
+      font-size: .9em;
       color: var(--primary-black);
       background-color: #fff;
-      border: solid 1px var(--primary-black);
+      border: solid 0.0625em var(--primary-black);
     }
   }
 </style>

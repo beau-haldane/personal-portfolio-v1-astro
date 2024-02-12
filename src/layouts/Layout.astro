@@ -18,7 +18,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class='container'>
+    <main>
       <h1 class='border-overlap top'>Beau Jorgensen</h1>
       <div class='content-outline'>
         <slot />
@@ -41,76 +41,76 @@ const { title } = Astro.props;
         >
         <a href='/contact' aria-label='contact-link'><img src='/img/svg-icons/email.svg' alt='email-icon' /></a>
       </div>
-    </div>
-    <p class='credit'>
+    </main>
+    <footer>
       Designed and coded by yours truly with inspiration from <a href='https://brittanychiang.com/' target='_blank'
         >Britanny Chiang
       </a>.
-    </p>
+    </footer>
   </body>
 </html>
 
 <style>
-  .container {
+  main {
     width: 90%;
-    max-width: 1400px;
+    max-width: 87.5em;
     height: 100%;
-    margin: 3.125rem 0 4rem 0;
-    gap: 1.25rem;
+    margin: 3.125em 0 4em 0;
+    gap: 1.25em;
     overflow: hidden;
 
-    @media (min-width: 500px) {
-      margin: 3.125rem 0 3.5rem 0;
+    @media (min-width: 31.25em) {
+      margin: 3.125em 0 3.5em 0;
     }
   }
 
   .content-outline {
     height: 100%;
     width: 100%;
-    border-top: solid 2px;
-    border-bottom: solid 2px;
-    padding: 1.25rem 0;
+    border-top: solid 0.125em;
+    border-bottom: solid 0.125em;
+    padding: 1.25em 0;
 
-    @media (min-width: 830px) {
-      padding: 1.25rem 1.875rem;
-      border: solid 2px;
+    @media (min-width: 51.875em) {
+      padding: 1.25em 1.875em;
+      border: solid 0.125em;
     }
   }
 
   .border-overlap {
     position: absolute;
     background-color: #fff;
-    padding: 0 0.625rem 0 0;
-    @media (min-width: 830px) {
+    padding: 0 0.625em 0 0;
+    @media (min-width: 51.875em) {
       padding: 0 0.625rem;
     }
   }
 
   .top {
-    @media (min-width: 830px) {
+    @media (min-width: 51.875em) {
       margin: -0.9375rem 0 0 1.25rem;
     }
     margin-top: -0.9375rem;
   }
 
   .bottom {
-    @media (min-width: 830px) {
-      margin: -1rem 0 0 1.25rem;
+    @media (min-width: 51.875em) {
+      margin: -1em 0 0 1.25em;
     }
-    margin-top: -1rem;
+    margin-top: -1em;
     display: flex;
-    gap: 0.625rem;
+    gap: 0.625em;
   }
 
-  .credit {
+  footer {
     position: fixed;
     bottom: 0;
+    margin-bottom: 1.5em;
     width: 100%;
     text-align: center;
-    font-size: 0.75rem;
-    line-height: 0.8rem;
+    font-size: 0.75em;
+    line-height: 0.8em;
     a {
-      font-size: 0.8rem;
       font-weight: 400;
     }
   }

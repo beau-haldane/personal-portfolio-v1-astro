@@ -3,7 +3,7 @@ const { heading } = Astro.props;
 const divId = heading.toLowerCase().split(' ').join('-');
 ---
 
-<div class='section' id={divId}>
+<section id={divId}>
   <div class='section-heading'>
     <h2>
       {heading}
@@ -11,20 +11,20 @@ const divId = heading.toLowerCase().split(' ').join('-');
     <div class='divider'></div>
   </div>
   <slot />
-</div>
+</section>
 
 <style>
-  .section {
+  section {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.5em;
   }
 
   .section-heading {
     position: sticky;
     top: 0;
     background-color: #fff;
-    padding: 10px 0;
+    padding: 0.625em 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,8 +34,8 @@ const divId = heading.toLowerCase().split(' ').join('-');
     }
 
     .divider {
-      height: 2px;
-      margin: 2px 0 0 10px;
+      height: 0.125em;
+      margin: 0.125em 0 0 0.625em;
       flex-grow: 1;
       background-color: #212121;
     }
