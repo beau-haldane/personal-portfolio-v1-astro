@@ -2,6 +2,16 @@ import type { ProjectDetails } from '../types';
 
 export const softwareProjects: ProjectDetails[] = [
   {
+    projectTitle: 'Print-A-Drum',
+    projectLink: 'https://beau-haldane.github.io/print-a-drum/',
+    projectImagePath: '/img/projects/print-a-drum.JPG',
+    details: [
+      'Leverages the `replicad` package to take user input and generate 3D models which can be downloaded, 3D printed, and assembled into a usable instrument.',
+      `In 2023 I designed my own version of a 3D printable snare drum using a static model I'd designed in Fusion 360. I wanted a way to enable users to define their own parameters for a drum (depth, diameter, thickness, etc) and generate 3D models which could be printed and assembled at home on an ordinary 3D printer. Through much trial end error I settled on a package called replicad, and I brough Print-A-Drum to life. It runs entirely within the browser and leverages the design system of my initial static 3D model while allowing users to dictate many custom parameters to enable them to generate models for their own drum`
+    ],
+    skillsUsed: ['TypeScript', 'React', 'Zustand (state management)', 'Mantime (components)']
+  },
+  {
     projectTitle: 'Personal Portfolio',
     projectImagePath: '/img/projects/portfolio.png',
     repositoryLinks: [
@@ -25,18 +35,6 @@ export const softwareProjects: ProjectDetails[] = [
       'Enables users to quickly choose recipes for the week, scale them to their required servings, and generate a comprehensive list of ingredients - like a manual version of Hello Fresh',
     ],
     skillsUsed: ['TypeScript', 'SvelteKit', 'Tailwind', 'Express', 'SQL', 'Supabase', 'Project Architecture'],
-  },
-  {
-    projectTitle: 'Menajerie Website',
-    projectLink: 'https://www.menajerie.com.au/',
-    projectImagePath: '/img/projects/menajerie.png',
-    repositoryLinks: [
-      { linkTitle: 'Front-end repository', linkHref: 'https://github.com/beau-haldane/menajerie-svelte' },
-    ],
-    details: [
-      'My band had a Wix website which was costing us around $200 per year. It was lacking a little in the looks department, and Wix had poor support for updating the site with our live gigs. I designed and built this static site using Svelte and Tailwind. It deploys to GitHub Pages, queries a table in Supabase to display our upcoming gigs (if there are any), and we save $200.',
-    ],
-    skillsUsed: ['TypeScript', 'Svelte Static Site', 'Tailwind', 'Figma', 'Supabase']
   },
 ];
 
